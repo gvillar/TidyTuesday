@@ -7,6 +7,7 @@ library("tidytuesdayR")
 library("tidyverse")
 library("ggtext")
 library("showtext")
+library("ggimage")
 
 tuesdata <- tt_load(2020, week = 31)
 #animal_outcomes, animal_complaints, brisbane_complaints
@@ -18,10 +19,22 @@ normalize_penguins <- function(x) {
   return(normalized)
 }
 
-female_penguins <- penguins %>% filter(sex == "female")
-male_penguins <- penguins %>% filter(sex == "male")
-female_penguins[3:6] <- apply(female_penguins[3:6], 2, normalize_penguins)
-male_penguins[3:6] <- apply(male_penguins[3:6], 2, normalize_penguins)
+registered_penguins <- penguins %>% filter(sex == c("female","male"))
+registered_penguins[3:6] <- apply(registered_penguins[3:6], 2, normalize_penguins)
+final_penguins <- registered_penguins[1:7]
+final_penguins$image <- "https://github.com/gvillar/TidyTuesday/blob/master/week%202%20(%23TidyTuesday%20week%2031)/penguin_footprint.png?raw=true"
+ggplot(final_penguins, aes(x = bill_length_mm, y = sex)) +
+  geom_jitter(aes(x = bill_length_mm - 0.1, y = sex), size = 0.01, color = "#cacaca", alpha = 0.1) +
+  geom_jitter(aes(x = bill_length_mm - 0.2, y = sex), size = 0.01, color = "#cacaca", alpha = 0.2) +
+  geom_jitter(aes(x = bill_length_mm - 0.3, y = sex), size = 0.01, color = "#cacaca", alpha = 0.3) +
+  geom_jitter(aes(x = bill_length_mm - 0.4, y = sex), size = 0.01, color = "#cacaca", alpha = 0.4) +
+  geom_jitter(aes(x = bill_length_mm - 0.5, y = sex), size = 0.01, color = "#cacaca", alpha = 0.5) +
+  geom_jitter(aes(x = bill_length_mm - 0.6, y = sex), size = 0.01, color = "#cacaca", alpha = 0.6) +
+  geom_jitter(aes(x = bill_length_mm - 0.7, y = sex), size = 0.01, color = "#cacaca", alpha = 0.7) +
+  geom_jitter(aes(x = bill_length_mm - 0.8, y = sex), size = 0.01, color = "#cacaca", alpha = 0.8) +
+  geom_jitter(aes(x = bill_length_mm - 0.9, y = sex), size = 0.01, color = "#cacaca", alpha = 0.9) +
+  geom_image(aes(image = image), position = "jitter", size = 0.03)
+
 
 
 #df_complaints <- as.data.frame(complaints)
