@@ -95,12 +95,31 @@ ggplot(final_penguins, aes(x = value,
   scale_fill_manual(values = c("#98edea","#dfe5ea","#a3d9f2")) +
   scale_x_continuous(limit = c(-0.4, 1.4)) +
   ## snowflakes
-  draw_image(snowflake, width = 0.2, height = 0.2, x = 1.41, y = 4.43, hjust = 0.5) +
-  draw_image(snowflake, width = 0.2, height = 0.2, x = -0.44, y = 1.46, hjust = 0.5) +
+  draw_image(snowflake,
+             width = 0.2,
+             height = 0.2,
+             x = 1.41,
+             y = 4.43,
+             hjust = 0.5) +
+  draw_image(snowflake,
+             width = 0.2,
+             height = 0.2,
+             x = -0.44,
+             y = 1.46,
+             hjust = 0.5) +
   ## annotations
-  annotate("text", x = -0.38, y = 1.40, label = "The bill length helps to distinguish\n Adelie species from Chinstra\n (or Gentoo) penguins", color = "#FFFFFF", family = "lato", size = 3.1, hjust = 0) +
-  annotate("text", x = 1.35, y = 4.36, label = "Except for the bill length, all the\nproperties separate Gentoo\nspecies from the rest", color = "#FFFFFF", family = "lato", size = 3.1, hjust = 1)
+  annotate("text",
+           x = -0.38,
+           y = 1.40,
+           label = "The bill length helps to distinguish\n Adelie species from Chinstra\n (or Gentoo) penguins", color = "#FFFFFF", family = "lato", size = 3.1, hjust = 0) +
+  annotate("text",
+           x = 1.35,
+           y = 4.36,
+           label = "Except for the bill length, all the\nproperties separate Gentoo\nspecies from the rest", color = "#FFFFFF", family = "lato", size = 3.1, hjust = 1)
   
 
 #saving plot for desktop (this time I did not make any mobile version)
-ggsave("desktop_week31_guillermo_villar.png", width = 10, height = 7, dpi = 300)
+ggsave("desktop_week31_guillermo_villar.png",
+       width = 10,
+       height = 7,
+       dpi = 300)
